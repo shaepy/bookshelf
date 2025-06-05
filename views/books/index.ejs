@@ -1,0 +1,13 @@
+<!-- this is where /books will go -->
+<%- include('../partials/header') %>
+    <p><a href="/">Go Home</a></p>
+    <h1>Bookshelf</h1>
+    <p>You have a total <%= books.length %> books in your shelf.</p>
+    <ul id="book-list">
+        <% books.forEach(book => { %>
+            <li><%= book.title %> by <%= book.author %></li>
+        <% }); %>
+    </ul>
+
+</body>
+</html>

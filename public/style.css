@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: system-ui, sans-serif;
+    gap: 10px;
+    letter-spacing: 0.04rem;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    list-style-type: none;
+}
+
+ul#book-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: square;
+}
+
+#new-book-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    width: 70%;
+}
+
+#new-book-form button {
+    width: 80px;
+    font-family: system-ui, sans-serif;
+    padding: 5px;
+}
+
+#new-book-form div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+#new-book-form div input[type='text'] {
+    padding: 4px;
+    width: 200px;
+    font-family: system-ui, sans-serif;
+    letter-spacing: 0.04rem;
+    text-align: center;
+}
+
+#new-book-form div textarea {
+    width: 250px;
+    height: 100px;
+    padding: 5px;
+    font-family: system-ui, sans-serif;
+    letter-spacing: 0.04rem;
+}
+
+#new-book-form div small {
+    font-size: .65rem;
+    letter-spacing: 0rem;
+}
+
+#new-book-form div.checkbox {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
