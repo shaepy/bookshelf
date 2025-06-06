@@ -16,12 +16,16 @@ app.get('/', (req, res) => {
 
 app.get('/books', async (req, res) => {
   const allBooks = await Book.find()
-  console.log(allBooks)
   res.render('books/index', { books: allBooks })
 })
 
 app.get('/books/new', (req, res) => {
   res.render('books/new')
+})
+
+app.get('/books/:bookId', async (req, res) => {
+  const foundBook = await Book.findById(req.params.bookId)
+  res.render('books/show', { book: foundBook })
 })
 
 app.post('/books', async (req, res) => {

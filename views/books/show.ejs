@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+    <p><a href="/">Go Home</a></p>
+
+    <h1><%= book.title %></h1>
+    <h2><%= book.author %></h2>
+    <p><%= book.description %></p>
+    <p>Genre: <%= book.genre %></p>
+    <p>Language: <%= book.language %></p>
+    <p>Published in <%= book.year %> by <%= book.publisher %></p>
+    <p><%= book.pages %> pages</p>
+    <p>ISBN#<%= book.isbn %></p>
+    <p><%= book.isOwned ? 'You already own this book.' : 'You do not own this book.' %></p>
+
+</body>
+</html>

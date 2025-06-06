@@ -5,13 +5,22 @@
 }
 
 body {
-    margin-top: 20px;
+    padding: 3%;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: system-ui, sans-serif;
     gap: 10px;
     letter-spacing: 0.04rem;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+
+a:hover {
+    color:rgb(252, 92, 190);
 }
 
 nav ul {
@@ -25,6 +34,7 @@ ul#book-list {
     display: flex;
     flex-direction: column;
     list-style-type: square;
+    width: 85%;
 }
 
 #new-book-form {

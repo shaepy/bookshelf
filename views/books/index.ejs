@@ -2,10 +2,10 @@
 <%- include('../partials/header') %>
     <p><a href="/">Go Home</a></p>
     <h1>Bookshelf</h1>
-    <p>You have a total <%= books.length %> books in your shelf.</p>
+    <p>You have a total <%= books.length %> books on your shelf.</p>
     <ul id="book-list">
         <% books.forEach(book => { %>
-            <li><%= book.title %> by <%= book.author %></li>
+            <li><a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a></li>
         <% }); %>
     </ul>
 
