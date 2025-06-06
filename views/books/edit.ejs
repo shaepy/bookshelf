@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+    <p><a href="/books" class="nav-link">Back to Bookshelf</a></p> 
+
+    <h1>Edit Book</h1>
+    <p><%= book.title %> by <%= book.author %></p>
+
+    <form action="/books/<%=book._id%>?_method=PUT" method="POST" id="edit-book-form">
+        <div>
+            <label for="title">title</label>
+            <input type="text" name="title" id="title" value="<%= book.title %>"/>
+        </div>
+        <div>
+            <label for="author">author</label>
+            <input type="text" name="author" id="author" value="<%= book.author %>" />
+        </div>
+        <div>
+            <label for="genre">genre</label>
+            <input type="text" name="genre" id="genre" value="<%= book.genre %>" />
+        </div>
+        <div>
+            <label for="language">language</label>
+            <input type="text" name="language" id="language" value="<%= book.language %>"/>
+        </div>
+        <div>
+            <label for="isbn">ISBN #</label>
+            <input type="text" name="isbn" id="isbn" value="<%= book.isbn %>"/>
+        </div>
+        <div>
+            <label for="year">year published</label>
+            <input type="text" name="year" id="year" value="<%= book.year %>"/>
+        </div>
+        <div>
+            <label for="publisher">publisher</label>
+            <input type="text" name="publisher" id="publisher" value="<%= book.publisher %>"/>
+        </div>
+        <div>
+            <label for="pages">total pages</label>
+            <input type="text" name="pages" id="pages" value="<%= book.pages %>"/>
+        </div>
+        <div>
+            <label for="description">description</label>
+            <textarea type="text" name="description" id="description"><%= book.description %></textarea>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="isOwned" id="isOwned" <% if (book.isOwned) { %>checked<% } %>/>
+            <label for="isOwned">I own this book</label>
+        </div>
+        <button type="submit" id="edit-book-button">save changes</button>
+    </form>
+</body>
+</html>

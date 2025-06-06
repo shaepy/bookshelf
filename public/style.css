@@ -14,6 +14,10 @@ body {
     letter-spacing: 0.04rem;
 }
 
+h1.book-title {
+    font-size: 1.7rem;
+}
+
 a {
     text-decoration: none;
     color:black;
@@ -21,6 +25,11 @@ a {
 
 a:hover {
     color:rgb(252, 92, 190);
+}
+
+a.nav-link {
+    padding: 2px 3px;
+    font-weight: 500;
 }
 
 nav ul {
@@ -37,42 +46,92 @@ ul#book-list {
     width: 85%;
 }
 
-#new-book-form {
+#book-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 1.5%;
+}
+
+button {
+    width: 100%;
+    font-family: system-ui, sans-serif;
+    letter-spacing: 0.02rem;
+    cursor: pointer;
+    background-color: #000;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: .9rem;
+    text-align: center;
+}
+
+button:hover, #edit-book-link:hover {
+    background-color: #75e8ff;
+    color: black;
+}
+
+#edit-book-link {
+    letter-spacing: 0.02rem;
+    cursor: pointer;
+    background-color: #000;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: .9rem;
+}
+
+#show-page-buttons-div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#add-book-button {
+    width: 100px;
+}
+
+#edit-book-button {
+    width: 130px;
+}
+
+#new-book-form, #edit-book-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
     padding: 10px;
-    width: 70%;
 }
 
-#new-book-form button {
-    width: 80px;
-    font-family: system-ui, sans-serif;
-    padding: 5px;
-}
-
-#new-book-form div {
+#new-book-form div, #edit-book-form div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 4px;
+    gap: 10px;
 }
 
-#new-book-form div input[type='text'] {
+#new-book-form div input[type='text'], #edit-book-form div input[type='text'] {
     padding: 4px;
     width: 200px;
     font-family: system-ui, sans-serif;
     letter-spacing: 0.04rem;
-    text-align: center;
 }
 
-#new-book-form div textarea {
-    width: 250px;
-    height: 100px;
+#new-book-form div textarea, #edit-book-form div textarea {
+    width: 340px;
+    height: 110px;
     padding: 5px;
     font-family: system-ui, sans-serif;
     letter-spacing: 0.04rem;
+}
+
+#edit-book-form div textarea {
+    width: 360px;
+    height: 140px;
 }
 
 #new-book-form div small {
