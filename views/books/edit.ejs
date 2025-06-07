@@ -6,19 +6,19 @@
 
     <form action="/books/<%=book._id%>?_method=PUT" method="POST" id="edit-book-form">
         <div>
-            <label for="title">title</label>
+            <label for="title">Title</label>
             <input type="text" name="title" id="title" value="<%= book.title %>"/>
         </div>
         <div>
-            <label for="author">author</label>
+            <label for="author">Author</label>
             <input type="text" name="author" id="author" value="<%= book.author %>" />
         </div>
         <div>
-            <label for="genre">genre</label>
+            <label for="genre">Genre</label>
             <input type="text" name="genre" id="genre" value="<%= book.genre %>" />
         </div>
         <div>
-            <label for="language">language</label>
+            <label for="language">Language</label>
             <input type="text" name="language" id="language" value="<%= book.language %>"/>
         </div>
         <div>
@@ -26,19 +26,19 @@
             <input type="text" name="isbn" id="isbn" value="<%= book.isbn %>"/>
         </div>
         <div>
-            <label for="year">year published</label>
+            <label for="year">Year Published</label>
             <input type="text" name="year" id="year" value="<%= book.year %>"/>
         </div>
         <div>
-            <label for="publisher">publisher</label>
+            <label for="publisher">Publisher</label>
             <input type="text" name="publisher" id="publisher" value="<%= book.publisher %>"/>
         </div>
         <div>
-            <label for="pages">total pages</label>
+            <label for="pages">Pages</label>
             <input type="text" name="pages" id="pages" value="<%= book.pages %>"/>
         </div>
         <div>
-            <label for="description">description</label>
+            <label for="description">Description</label>
             <textarea type="text" name="description" id="description"><%= book.description %></textarea>
         </div>
         <div class="checkbox">
@@ -47,14 +47,14 @@
         </div>
         <div class="checkbox">
             <input type="checkbox" name="isCompleted" id="isCompleted" <% if (book.isCompleted) { %>checked<% } %>/>
-            <label for="isCompleted">Finished reading</label>
+            <label for="isCompleted">Finished Book</label>
         </div>
         <div class="checkbox">
             <input type="checkbox" name="wantToRead" id="wantToRead" <% if (book.wantToRead) { %>checked<% } %>/>
-            <label for="wantToRead">Want to read</label>
+            <label for="wantToRead">Add to Reading List</label>
         </div>
         <div class="checkbox">
-            <input type="checkbox" name="isFavorite" id="isFavorite" />
+            <input type="checkbox" name="isFavorite" id="isFavorite" <% if (book.isFavorite) { %>checked<% } %> />
             <label for="isFavorite">Add to Favorites</label>
          </div>
         <button type="submit" id="edit-book-button">save changes</button>

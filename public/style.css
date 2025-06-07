@@ -11,7 +11,7 @@ body {
     align-items: center;
     font-family: system-ui, sans-serif;
     gap: 18px;
-    letter-spacing: 0.04rem;
+    letter-spacing: 0.03rem;
 }
 
 h1.book-title {
@@ -23,15 +23,23 @@ a {
     color:black;
 }
 
-a.nav-link:hover, a:hover {
+a:hover {
     color:rgb(252, 92, 190);
     letter-spacing: 0rem;
     font-weight: 800;
 }
 
+a.nav-link:hover {
+    color:rgb(0, 0, 0);
+    font-weight: 600;
+    letter-spacing: 0.03rem;
+}
+
 a.nav-link {
     padding: 2px 3px;
-    font-weight: 600;
+    font-weight: 800;
+    letter-spacing: 0rem;
+    color:rgb(252, 92, 190);
 }
 
 nav ul, ul.collections-nav {
@@ -139,11 +147,11 @@ button {
     text-decoration: none;
     font-size: .9rem;
     text-align: center;
+    font-weight: 600;
 }
 
 button:hover, #edit-book-link:hover, #delete-book-link:hover {
     background-color: #75e8ff;
-    font-weight: 400;
     color: black;
 }
 
@@ -157,6 +165,7 @@ button:hover, #edit-book-link:hover, #delete-book-link:hover {
     border-radius: 4px;
     text-decoration: none;
     font-size: .9rem;
+    font-weight: 600;
 }
 
 #show-page-buttons-div {
@@ -176,7 +185,13 @@ button:hover, #edit-book-link:hover, #delete-book-link:hover {
 p#book-status {
     font-weight: 700;
     font-size: .9rem;
-    color: rgb(252, 92, 190);
+    background-color: rgb(226, 65, 165);
+    width: 30%;
+    min-width: 100px;
+    max-width: 200px;
+    padding: 2px;
+    text-align: center;
+    color: white;
 }
 
 #favorite-badge {
@@ -189,7 +204,7 @@ p#book-status {
 }
 
 #favorites-list li::marker {
-    content: '♥︎';
+    content: '♥︎ ';
     font-size: 1.1rem;
 }
 
@@ -203,7 +218,8 @@ p#book-status {
 a.nav-link.home {
     background-color: black;
     color: white;
-    padding: 5px 6px;
+    padding: 7px 7px;
+    font-size: .9rem;
 }
 
 div#welcome-page {
@@ -211,4 +227,20 @@ div#welcome-page {
     flex-direction: column;
     gap: 18px;
     align-items: center;
+}
+
+div#book-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#book-section img {
+    object-fit: cover;
+    width: 30%;
+    height: 40%;
+    max-width: 300px;
+    max-height: 400px;
+    margin: 5px;
+    padding: 10px;
 }
