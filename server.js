@@ -14,15 +14,14 @@ app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride("_method")); 
 app.use(morgan("dev")); 
 
+/* --------- GET ROUTES --------- */
+
 app.get('/', (req, res) => {
   res.render('index')
 })
 
-/* --------- GET ROUTES --------- */
-
 app.get('/books', async (req, res) => {
-  let allBooks = await Book.find()
-  allBooks = allBooks.sort((a, b) => a.title - b.title)
+  const allBooks = await Book.find().sort({ title: 'asc' })
   res.render('books/index', { books: allBooks })
 })
 
@@ -31,22 +30,22 @@ app.get('/books/new', (req, res) => {
 })
 
 app.get('/books/owned', async (req, res) => {
-  const ownedBooks = await Book.find({ isOwned : true })
+  const ownedBooks = await Book.find({ isOwned : true }).sort({ title: 'asc' })
   res.render('books/collections/owned', { books: ownedBooks })
 })
 
 app.get('/books/completed', async (req, res) => {
-  const finishedBooks = await Book.find({ isCompleted : true })
+  const finishedBooks = await Book.find({ isCompleted : true }).sort({ title: 'asc' })
   res.render('books/collections/completed', { books: finishedBooks })
 })
 
 app.get('/books/reading-list', async (req, res) => {
-  const wantToReadBooks = await Book.find({ wantToRead : true })
+  const wantToReadBooks = await Book.find({ wantToRead : true }).sort({ title: 'asc' })
   res.render('books/collections/reading', { books: wantToReadBooks })
 })
 
 app.get('/books/favorites', async (req, res) => {
-  const favoriteBooks = await Book.find({ isFavorite : true })
+  const favoriteBooks = await Book.find({ isFavorite : true }).sort({ title: 'asc' })
   res.render('books/collections/favorites', { books: favoriteBooks })
 })
 
@@ -68,11 +67,14 @@ app.get('/books/:bookId/delete', async (req, res) => {
 /* --------- POST ROUTES --------- */
 
 app.post('/books', async (req, res) => {
-  req.body.isOwned = req.body.isOwned === 'on' ? true : false
-  req.body.isCompleted = req.body.isCompleted === 'on' ? true : false
-  req.body.wantToRead = req.body.wantToRead === 'on' ? true : false
-  req.body.isFavorite = req.body.isFavorite === 'on' ? true : false
-  const newBook = await Book.create(req.body)
+  const { isOwned, isCompleted, wantToRead, isFavorite, ...bookData } = req.body
+  const newBook = await Book.create({
+    ...bookData,
+    isOwned: isOwned === 'on',
+    isCompleted: isCompleted === 'on',
+    wantToRead: wantToRead === 'on',
+    isFavorite: isFavorite === 'on'
+  })
   console.log(newBook)
   res.redirect('/books')
 })
@@ -80,11 +82,14 @@ app.post('/books', async (req, res) => {
 /* --------- PUT ROUTES --------- */
 
 app.put('/books/:bookId', async (req, res) => {
-  req.body.isOwned = req.body.isOwned === 'on' ? true : false
-  req.body.isCompleted = req.body.isCompleted === 'on' ? true : false
-  req.body.wantToRead = req.body.wantToRead === 'on' ? true : false
-  req.body.isFavorite = req.body.isFavorite === 'on' ? true : false
-  await Book.findByIdAndUpdate(req.params.bookId, req.body)
+  const { isOwned, isCompleted, wantToRead, isFavorite, ...bookData } = req.body
+  await Book.findByIdAndUpdate(req.params.bookId, {
+    ...bookData,
+    isOwned: isOwned === 'on',
+    isCompleted: isCompleted === 'on',
+    wantToRead: wantToRead === 'on',
+    isFavorite: isFavorite === 'on'
+  })
   res.redirect(`/books/${req.params.bookId}`)
 })
 

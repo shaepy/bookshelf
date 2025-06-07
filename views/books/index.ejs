@@ -9,12 +9,10 @@
         <small><li><a href="/books/favorites">Favorites</a></li></small>
     </ul>
     <h2>You have <%= books.length %> books on your shelf.</h2>
-    
     <ul class="book-list">
         <% books.forEach(book => { %>
             <li><a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a></li>
         <% }); %>
     </ul>
-
 </body>
 </html>
