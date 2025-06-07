@@ -24,3 +24,6 @@ Your completed application should have the following RESTful routes:
 | GET         | /plants/:id/edit | Edit    | Shows a form to edit an existing plant |
 | PUT         | /plants/:id      | Update  | Updates a specific plant by its ID     |
 | DELETE      | /plants/:id      | Destroy | Deletes a specific plant by its ID     |
+
+## Resources
+- [Open Library Covers API](https://openlibrary.org/dev/docs/api/covers) for book cover images
