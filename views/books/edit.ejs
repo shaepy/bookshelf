@@ -1,10 +1,14 @@
 <%- include('../partials/header') %>
-    <p><a href="/books" class="nav-link">← Back to Bookshelf</a></p> 
+    <p><a href="/books/<%= book._id %>" class="nav-link">← Back to Book</a></p> 
 
-    <h1>Edit Book</h1>
+    <h1 class="dm-serif-display ">Edit Book</h1>
     <p><%= book.title %> by <%= book.author %></p>
 
     <form action="/books/<%=book._id%>?_method=PUT" method="POST" id="edit-book-form">
+        <div class="checkbox">
+            <input type="checkbox" name="isReading" id="isReading" <% if (book.isReading) { %>checked<% } %>/>
+            <label for="isReading">Check here if currently reading this book</label>
+        </div>
         <div>
             <label for="title">Title</label>
             <input type="text" name="title" id="title" value="<%= book.title %>"/>
@@ -22,7 +26,7 @@
             <input type="text" name="language" id="language" value="<%= book.language %>"/>
         </div>
         <div>
-            <label for="isbn">ISBN #</label>
+            <label for="isbn">ISBN</label>
             <input type="text" name="isbn" id="isbn" value="<%= book.isbn %>"/>
         </div>
         <div>

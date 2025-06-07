@@ -40,8 +40,14 @@ app.get('/books/completed', async (req, res) => {
 })
 
 app.get('/books/reading-list', async (req, res) => {
-  const wantToReadBooks = await Book.find({ wantToRead : true }).sort({ title: 'asc' })
-  res.render('books/collections/reading', { books: wantToReadBooks })
+  const booksToRead = await Book.find({
+    $and: [
+      { wantToRead: true },
+      { isReading: false }
+    ]
+  }).sort({ title: 'asc' });
+  const booksInProgress = await Book.find({ isReading : true }).sort({ title: 'asc' })
+  res.render('books/collections/reading', { booksToRead: booksToRead, booksInProgress: booksInProgress })
 })
 
 app.get('/books/favorites', async (req, res) => {
@@ -67,13 +73,14 @@ app.get('/books/:bookId/delete', async (req, res) => {
 /* --------- POST ROUTES --------- */
 
 app.post('/books', async (req, res) => {
-  const { isOwned, isCompleted, wantToRead, isFavorite, ...bookData } = req.body
+  const { isOwned, isCompleted, wantToRead, isFavorite, isReading, ...bookData } = req.body
   const newBook = await Book.create({
     ...bookData,
     isOwned: isOwned === 'on',
     isCompleted: isCompleted === 'on',
     wantToRead: wantToRead === 'on',
-    isFavorite: isFavorite === 'on'
+    isFavorite: isFavorite === 'on',
+    isReading: isReading === 'on'
   })
   console.log(newBook)
   res.redirect('/books')
@@ -82,13 +89,14 @@ app.post('/books', async (req, res) => {
 /* --------- PUT ROUTES --------- */
 
 app.put('/books/:bookId', async (req, res) => {
-  const { isOwned, isCompleted, wantToRead, isFavorite, ...bookData } = req.body
+  const { isOwned, isCompleted, wantToRead, isFavorite, isReading, ...bookData } = req.body
   await Book.findByIdAndUpdate(req.params.bookId, {
     ...bookData,
     isOwned: isOwned === 'on',
     isCompleted: isCompleted === 'on',
     wantToRead: wantToRead === 'on',
-    isFavorite: isFavorite === 'on'
+    isFavorite: isFavorite === 'on',
+    isReading: isReading ==='on'
   })
   res.redirect(`/books/${req.params.bookId}`)
 })
@@ -111,3 +119,8 @@ mongoose.connection.on("connected", () => {
 app.listen(process.env.PORT, () => {
     console.log(`App is listening on port ${process.env.PORT}`)
 })
+
+// TODO-ST ASK BLAZE, PURVI, or chatGPT
+// figure out search and sort filter system
+// - sort by genre
+// - sort by author, etc.

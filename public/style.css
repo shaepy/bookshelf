@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -12,21 +14,17 @@ body {
     font-family: system-ui, sans-serif;
     gap: 18px;
     letter-spacing: 0.03rem;
-    background-color: #FAF3F0;
-    color: #2C2628;
-}
-
-h1.book-title {
-    font-size: 1.7rem;
+    background-color: #F7EEDE;
+    color: #5C4C47;
 }
 
 a {
     text-decoration: none;
-    color: #2C2628;
+    color: #5C4C47;
 }
 
 a:hover {
-    color:#50B0B9;
+    color:#F15555;
     letter-spacing: 0rem;
     font-weight: 800;
 }
@@ -40,8 +38,32 @@ a.nav-link:hover {
 a.nav-link {
     padding: 2px 3px;
     font-weight: 800;
-    letter-spacing: 0rem;
+    letter-spacing: 0.02rem;
     color: #F3A916;
+}
+
+a.nav-link.home {
+    color: white;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+a.nav-link.home:hover {
+    letter-spacing: 0rem;
+    font-weight: 800;
+}
+
+#home-nav li {
+    background-color: #F3A916;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#home-nav li:hover {
+    background-color: #F15555;
+    transform: scale(1.06);
 }
 
 nav ul, ul.collections-nav {
@@ -127,15 +149,6 @@ ul.book-list {
     gap: 8px;
 }
 
-#delete-button {
-    background-color: red;
-}
-
-#delete-button:hover {
-    background-color: rgb(211, 7, 7);
-    color: white;
-}
-
 button {
     width: 100%;
     font-family: system-ui, sans-serif;
@@ -154,6 +167,7 @@ button {
 
 button:hover, #edit-book-link:hover, #delete-book-link:hover {
     background-color: #3b949d;
+    transform: scale(1.05);
 }
 
 #edit-book-link, #delete-book-link {
@@ -187,9 +201,7 @@ p#book-status {
     font-weight: 700;
     font-size: .9rem;
     background-color: #F15555;
-    width: 30%;
-    min-width: 100px;
-    max-width: 200px;
+    width: 200px;
     padding: 2px;
     text-align: center;
     color: white;
@@ -216,24 +228,45 @@ p#book-status {
     object-fit: cover;
 }
 
-a.nav-link.home {
-    background-color: #50B0B9;
-    color: white;
-    padding: 7px 7px;
-    font-size: .9rem;
-}
-
 div#welcome-page {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 15px;
     align-items: center;
+}
+
+#welcome-page h1 {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
 }
 
 div#book-section {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+h1.dm-serif-display {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.4rem;
+}
+
+h2.dm-serif-display, h1.book-title.dm-serif-display {
+    font-size: 1.9rem;
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h2.book-title.dm-serif-display {
+    font-size: 1.5rem;
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 #book-section img {
@@ -244,4 +277,46 @@ div#book-section {
     max-height: 400px;
     margin: 5px;
     padding: 10px;
+}
+
+#delete-div {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: center;
+    margin: 5px;
+}
+
+#delete-button {
+    background-color: red;
+    width: 120px;
+}
+
+#delete-button:hover {
+    background-color: rgb(211, 7, 7);
+    color: white;
+}
+
+label[for="isReading"] {
+    font-size: .8rem;
+}
+
+@media (max-width: 500px) {
+    div#book-section {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    #book-section img {
+        object-fit: cover;
+        width: 40%;
+        max-width: 300px;
+        margin: 5px;
+        padding: 10px;
+    }
+
+    #welcome-page h1 {
+        font-size: 2rem;
+    }
 }

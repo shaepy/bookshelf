@@ -6,25 +6,31 @@
             <% if (book.isFavorite) {%>
                 <h3 id="favorite-badge">♥︎ TOP PICK</h3>
             <% } %>
-            <h1 class="book-title"><%= book.title %></h1>
-            <h2>written by <%= book.author %></h2>
+            <h1 class="book-title dm-serif-display"><%= book.title %></h1>
+            <h2 class="book-title dm-serif-display">written by <%= book.author %></h2>
             <p><%= book.description %></p>
             <h3>Genre</h3>
             <p><%= book.genre %></p>
             <h3>Language</h3>
             <p><%= book.language %></p>
             <h3>More Info</h3>
-            <p>Published in <%= book.year %> by <%= book.publisher %></p>
             <p><%= book.pages %> pages</p>
-            <p>ISBN#<%= book.isbn %></p>
-            <h3>Collection</h3>
-            <p><%= book.isOwned ? 'You own this book.' : 'You do not own this book.' %></p>
-            <h3>Reading List</h3>
-            <p><%= book.wantToRead ? 'This book is in your reading list.' : 'This book is not in your reading list.' %></p>
+            <p>Published in <%= book.year %> by <%= book.publisher %></p>
+            <p>ISBN: <%= book.isbn %></p>
+            <h3>📚 Collection</h3>
+            <p><%= book.isOwned ? '✅ You own this book.' : 'You do not own this book.' %></p>
+            <h3>📖 Reading List</h3>
+            <p><%= book.wantToRead ? '✅ This book is in your reading list.' : 'This book is not in your reading list.' %></p>
             <h3>Status</h3>
-            <p id="book-status"><%= book.isCompleted ? '★ FINISHED READING' : 'UNREAD' %></p>
+            <% if (book.isCompleted) { %>
+                <p id="book-status">★ FINISHED READING</p>
+            <% } else if (book.isReading) { %>
+                <p id="book-status">CURRENTLY READING</p>
+            <% } else { %>
+                <p id="book-status">UNREAD</p>
+            <% } %>
         </div>
-        <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" />
+        <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" alt="image of book cover"/>
     </div>
 
     <div id="show-page-buttons-div">

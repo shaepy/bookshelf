@@ -1,14 +1,14 @@
 <%- include('../../partials/header') %>
     <p><a href="/" class="nav-link">← Go Home</a></p>
-    <h1>Finished Books</h1>
+    <h1 class="dm-serif-display">Finished Books</h1>
     <ul class="collections-nav">
         <small><li><a href="/books">Bookshelf</a></li></small>
         <small><li><a href="/books/reading-list">Reading List</a></li></small>
         <small><li><a href="/books/owned">Books Owned</a></li></small>
         <small><li><a href="/books/favorites">Favorites</a></li></small>
     </ul>
-    <h2>You have finished reading <%= books.length %> books.</h2>
-    <ul class="book-list">
+    <h2 class="dm-serif-display">You have completed <%= books.length %> books ★</h2>
+    <ul class="book-list" id="finished-books-list">
         <% books.forEach(book => { %>
         <li><a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a></li>
         <% }); %>

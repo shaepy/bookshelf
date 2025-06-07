@@ -1,10 +1,11 @@
 <%- include('../partials/header') %>
-     <p><a href="/books" class="nav-link">← Back to Bookshelf</a></p> 
-
-    <p>To delete '<%= book.title %> by <%= book.author %>', press the button below.</p>
-
-    <form action="/books/<%= book._id %>?_method=DELETE" method="POST">
-        <button type="submit" id="delete-button">delete book</button>
-    </form>
+     <p><a href="/books/<%= book._id %>" class="nav-link">← Back to Book</a></p> 
+    <h1 class="dm-serif-display ">Delete Book</h1>
+     <div id="delete-div">
+        <p>To delete '<%= book.title %> by <%= book.author %>', press the button below.</p>
+        <form action="/books/<%= book._id %>?_method=DELETE" method="POST">
+            <button type="submit" id="delete-button">delete book</button>
+        </form>
+    </div>
 </body>
 </html>
