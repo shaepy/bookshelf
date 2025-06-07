@@ -1,6 +1,6 @@
 <!-- this is where /books/new will go -->
 <%- include('../partials/header') %>
-<p><a href="/" class="nav-link">Go Home</a></p>
+<p><a href="/" class="nav-link">← Go Home</a></p>
 
 <form action="/books" method="POST" id="new-book-form">
     <small>* required</small>
@@ -43,6 +43,18 @@
     <div class="checkbox">
         <input type="checkbox" name="isOwned" id="isOwned" />
         <label for="isOwned">I own this book</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" name="isCompleted" id="isCompleted" />
+        <label for="isCompleted">Finished reading</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" name="wantToRead" id="wantToRead" />
+        <label for="wantToRead">Want to read</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" name="isFavorite" id="isFavorite" />
+        <label for="isFavorite">Add to Favorites</label>
     </div>
     <button type="submit" id="add-book-button">add book</button>
 </form>

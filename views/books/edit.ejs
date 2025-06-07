@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-    <p><a href="/books" class="nav-link">Back to Bookshelf</a></p> 
+    <p><a href="/books" class="nav-link">← Back to Bookshelf</a></p> 
 
     <h1>Edit Book</h1>
     <p><%= book.title %> by <%= book.author %></p>
@@ -45,6 +45,18 @@
             <input type="checkbox" name="isOwned" id="isOwned" <% if (book.isOwned) { %>checked<% } %>/>
             <label for="isOwned">I own this book</label>
         </div>
+        <div class="checkbox">
+            <input type="checkbox" name="isCompleted" id="isCompleted" <% if (book.isCompleted) { %>checked<% } %>/>
+            <label for="isCompleted">Finished reading</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="wantToRead" id="wantToRead" <% if (book.wantToRead) { %>checked<% } %>/>
+            <label for="wantToRead">Want to read</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="isFavorite" id="isFavorite" />
+            <label for="isFavorite">Add to Favorites</label>
+         </div>
         <button type="submit" id="edit-book-button">save changes</button>
     </form>
 </body>

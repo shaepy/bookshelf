@@ -1,12 +1,15 @@
 <!-- this is the / root page -->
 <%- include('partials/header') %>
-  <nav>
-    <ul>
-      <li><a href="/books" class="nav-link">View Bookshelf</a></li>
-      <li><a href="/books/new" class="nav-link">Add New Book</a></li>
-    </ul>
-  </nav>
-  <h1>Welcome to Bookshelf</h1>
-  <p>Collect your favorite books 📚</p>
+  <div id="welcome-page">
+    <h1>Welcome to Bookshelf</h1>
+    <p>Collect your favorite books 📚</p>
+    <nav>
+      <ul>
+        <li><a href="/books" class="nav-link home">View Bookshelf</a></li>
+        <li><a href="/books/new" class="nav-link home">Add New Book</a></li>
+      </ul>
+    </nav>
+  </div>
+  <img src="/img/magical-library-cat-stockcake.jpg" id="home-image" alt="cat sitting in magical library with books"/>
 </body>
 </html>

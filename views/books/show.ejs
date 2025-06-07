@@ -1,7 +1,10 @@
 <%- include('../partials/header') %>
-    <p><a href="/books" class="nav-link">Back to Bookshelf</a></p>
+    <p><a href="/books" class="nav-link">← Back to Bookshelf</a></p>
 
     <div id="book-details">
+        <% if (book.isFavorite) {%>
+            <h3 id="favorite-badge">♥︎ TOP PICK</h3>
+        <% } %>
         <h1 class="book-title"><%= book.title %></h1>
         <h2>written by <%= book.author %></h2>
         <p><%= book.description %></p>
@@ -14,15 +17,16 @@
         <p><%= book.pages %> pages</p>
         <p>ISBN#<%= book.isbn %></p>
         <h3>Collection</h3>
-        <p><%= book.isOwned ? 'You already own this book.' : 'You do not own this book.' %></p>
+        <p><%= book.isOwned ? 'You own this book.' : 'You do not own this book.' %></p>
+        <h3>Reading List</h3>
+        <p><%= book.wantToRead ? 'This book is in your reading list.' : 'This book is not in your reading list.' %></p>
+        <h3>Status</h3>
+        <p id="book-status"><%= book.isCompleted ? 'FINISHED READING' : 'UNREAD' %></p>
     </div>
 
     <div id="show-page-buttons-div">
         <a href="/books/<%= book._id %>/edit" id="edit-book-link">edit book</a>
-
-        <form action="/books/<%= book._id %>?_method=DELETE" method="POST">
-            <button type="submit">delete book</button>
-        </form>
+        <a href="/books/<%= book._id %>/delete" id="delete-book-link">delete book</a>
     </div>
 </body>
 </html>
