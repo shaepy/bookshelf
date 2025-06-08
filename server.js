@@ -128,15 +128,19 @@ async function fetchEdition(resultId) {
 
 async function fetchBookByISBN(bookId) {
   let edition = await fetch(`https://openlibrary.org/isbn/${bookId}.json`)
-  if (!edition.ok) throw new Error("Failed to fetch book data")
+  if (!edition.ok) throw new Error("Failed to fetch edition data")
   edition = await edition.json()
 
-  //call language API
-  let languageReq = await fetch(`https://openlibrary.org${edition.languages[0].key}.json`)
-  languageReq = await languageReq.json()
+  let languageReq;
+  if (edition.languages) {
+    languageReq = await fetch(`https://openlibrary.org${edition.languages[0].key}.json`)
+    if (!languageReq.ok) throw new Error("Failed to fetch language data")
+    languageReq = await languageReq.json()
+  }
 
   //call for author
   let authorReq = await fetch(`https://openlibrary.org${edition.authors[0].key}.json`)
+  if (!authorReq.ok) throw new Error("Failed to fetch author data")
   authorReq = await authorReq.json()
 
   // call for description, year
@@ -144,12 +148,12 @@ async function fetchBookByISBN(bookId) {
   if (!bookJson.ok) throw new Error("Failed to fetch book data")
   bookJson = await bookJson.json()
 
-  const language = languageReq.name
+  const language = languageReq ? languageReq.name : 'English'
   const author = authorReq.name
   const publisher = edition.publishers[0]
   const title = edition.title
   const pages = edition.number_of_pages
-  const publishDate = bookJson.first_publish_date
+  const publishDate = edition.publish_date
   const description = bookJson.description.value
   const genre = bookJson.subjects.slice(0, 6).join(',')
 
@@ -205,8 +209,3 @@ mongoose.connection.on("connected", () => {
 app.listen(process.env.PORT, () => {
     console.log(`App is listening on port ${process.env.PORT}`)
 })
-
-// TODO-ST ASK BLAZE, PURVI, or chatGPT
-// figure out search and sort filter system
-// - sort by genre
-// - sort by author, etc.
