@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+    <p><a href="/search" class="nav-link">← Back to Search</a></p>
+    <h1 class="dm-serif-display">Search Results</h1>
+
+    <p class="dm-serif-display"><%= results.docs.length %> results have been found.</p>
+
+    <div id="search-results">
+    <% results.docs.forEach((result) => { %>
+        <div class="search-result-details">
+            <div class="result-bundle">
+                <img src='https://covers.openlibrary.org/b/id/<%= result.cover_i %>-M.jpg' />
+                <div>
+                    <h2>Title</h2>
+                    <h3><%= result.title %></h3>
+                    <% if (result.author_name) { %>
+                        <h2>Author</h2>
+                        <h3><%= result.author_name[0] %> </h3>
+                    <% } %>
+                    <% if (result.first_publish_year) { %>
+                        <p>Published in <%= result.first_publish_year %></p>
+                    <% } %>
+                </div>
+            </div>
+            <a href="/search<%= result.key %>" class="select-result">select</a>
+        </div>
+    <% }); %> 
+    </div>
+</body>
+</html>
