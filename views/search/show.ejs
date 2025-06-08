@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+    <p><a href="/search" class="nav-link">← Back to Search</a></p>
+    <h1 class="dm-serif-display">Book Editions Page</h1>
+    <p>Showing all Editions (<%= edition.entries.length %>)</p>
+
+    <div id="editions-box">
+        <% edition.entries.forEach((e) => { %>
+            <div class="edition-divs">
+                <img src="https://covers.openlibrary.org/b/isbn/<%= e.isbn_13 %>-M.jpg" />
+                <div>
+                    <p>title: <%= e.title %></p>
+                    <p>publish date: <%= e.publish_date %></p>
+                    <% if (e.publishers) { %>
+                        <p>publishers: <%= e.publishers %></p>
+                    <% } %>
+                    <p>ISBN: <%= e.isbn_13 %></p>
+                </div>
+                <form action="/search/results/<%= e.isbn_13 %>" method="POST">
+                    <button type="submit" id="add-book-from-search">add book</button>
+                </form>
+            </div>
+        <% }); %>
+    </div>
+        
+</body>
+</html>

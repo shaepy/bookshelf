@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+    <p><a href="/" class="nav-link">← Go Home</a></p>
+    <h1 class="dm-serif-display">Search for Books</h1>
+    <!-- form goes here -->
+
+    <form action="/search" method="POST" id="search-form">
+        <div>
+            <label for="title">Search by Book Title</label>
+            <input type="text" name="title" id="title" />
+        </div>
+        <p>or</p>
+        <div>
+            <label for="author">Search by Author</label>
+            <input type="text" name="author" id="author" />
+        </div>
+        <div>
+            <label for="limitResults">Limit Results</label>
+            <select id="limitResults" name="limitResults">
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+            </select>
+        </div>
+        <button type="submit" id="search-button">find my book</button>
+    </form>
+</body>
+</html>
