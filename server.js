@@ -9,12 +9,13 @@ const morgan = require("morgan");
 
 const app = express()
 app.set('view engine', 'ejs')
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "public"), { maxAge: 31536000 * 1000 }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride("_method")); 
 app.use(morgan("dev")); 
 
+// Global searchResults object
 let searchResults;
 
 /* --------- GET ROUTES --------- */
@@ -131,6 +132,7 @@ async function fetchBookByISBN(bookId) {
   if (!edition.ok) throw new Error("Failed to fetch edition data")
   edition = await edition.json()
 
+  // call for language
   let languageReq;
   if (edition.languages) {
     languageReq = await fetch(`https://openlibrary.org${edition.languages[0].key}.json`)
@@ -138,23 +140,25 @@ async function fetchBookByISBN(bookId) {
     languageReq = await languageReq.json()
   }
 
-  //call for author
-  let authorReq = await fetch(`https://openlibrary.org${edition.authors[0].key}.json`)
-  if (!authorReq.ok) throw new Error("Failed to fetch author data")
-  authorReq = await authorReq.json()
-
-  // call for description, year
+  // call for author
+  let authorReq;
+  if (edition.authors) {
+    authorReq = await fetch(`https://openlibrary.org${edition.authors[0].key}.json`)
+    if (!authorReq.ok) throw new Error("Failed to fetch author data")
+    authorReq = await authorReq.json()
+  }
+  // call for description
   let bookJson = await fetch(`https://openlibrary.org${edition.works[0].key}.json`)
   if (!bookJson.ok) throw new Error("Failed to fetch book data")
   bookJson = await bookJson.json()
 
-  const language = languageReq ? languageReq.name : 'English'
-  const author = authorReq.name
   const publisher = edition.publishers[0]
   const title = edition.title
   const pages = edition.number_of_pages
   const publishDate = edition.publish_date
-  const description = bookJson.description.value
+  const language = languageReq ? languageReq.name : 'English'
+  const author = authorReq ? authorReq.name : 'Unknown Author'
+  const description = bookJson.description ? bookJson.description.value : 'Unknown'
   const genre = bookJson.subjects.slice(0, 6).join(',')
 
   const book = {
@@ -169,7 +173,7 @@ async function fetchBookByISBN(bookId) {
     pages: pages,
     isOwned: false,
     isCompleted: false,
-    wantToRead: false,
+    wantToRead: true,
     isFavorite: false,
     isReading: false
   }

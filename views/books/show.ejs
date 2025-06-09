@@ -6,7 +6,10 @@
             <% if (book.isFavorite) {%>
                 <h3 id="favorite-badge">♥︎ TOP PICK</h3>
             <% } %>
-            <h1 class="book-title dm-serif-display"><%= book.title %></h1>
+            <h1 class="book-title dm-serif-display"><%= book.title %>
+                <% if (book.subtitle) { %> 
+                    • <%= book.subtitle %>
+                <% } %></h1>
             <h2 class="book-title dm-serif-display">written by <%= book.author %></h2>
             <p><%= book.description %></p>
             <h3>Genre</h3>
@@ -30,7 +33,7 @@
                 <p id="book-status">UNREAD</p>
             <% } %>
         </div>
-        <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" alt="image of book cover"/>
+        <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="image of book cover"/>
     </div>
 
     <div id="show-page-buttons-div">
