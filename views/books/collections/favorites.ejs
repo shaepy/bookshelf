@@ -1,12 +1,7 @@
 <%- include('../../partials/header') %>
     <p><a href="/" class="nav-link">← Go Home</a></p>
     <h1 class="dm-serif-display">Favorite Books</h1>
-    <ul class="collections-nav">
-        <small><li><a href="/books">Bookshelf</a></li></small>
-        <small><li><a href="/books/reading-list">Reading List</a></li></small>
-        <small><li><a href="/books/completed">Finished Books</a></li></small>
-        <small><li><a href="/books/owned">Books Owned</a></li></small>
-    </ul>
+    <%- include('../../partials/nav') %>
     <h2 class="dm-serif-display">You have <%= books.length %> top picks ♥︎</h2>
     <ul class="book-list" id="favorites-list">
         <% books.forEach(book => { %>
