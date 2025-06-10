@@ -14,7 +14,7 @@ body {
     font-family: system-ui, sans-serif;
     gap: 18px;
     letter-spacing: 0.03rem;
-    background-color: #F7EEDE;
+    background-color: #F7EDDE;
     color: #5C4C47;
 }
 
@@ -24,45 +24,40 @@ a {
 }
 
 a:hover {
-    color:#F15555;
+    color:#DB7F67;
     letter-spacing: 0rem;
     font-weight: 800;
-}
-
-a.nav-link:hover {
-    color: #F15555;
-    font-weight: 600;
-    letter-spacing: 0.03rem;
 }
 
 a.nav-link {
     padding: 2px 3px;
     font-weight: 800;
     letter-spacing: 0.02rem;
-    color: #F3A916;
+    color: #DB7F67;
+}
+
+a.nav-link:hover {
+    color: #D46549;
+    font-weight: 700;
 }
 
 a.nav-link.home {
-    color: white;
-    font-size: .9rem;
-    cursor: pointer;
-}
-
-a.nav-link.home:hover {
-    letter-spacing: 0rem;
-    font-weight: 800;
+    font-size: .95rem;
+    letter-spacing: 0.01rem;
+    font-weight: 600;
+    color: #ffffff;
 }
 
 #home-nav li {
-    background-color: #F3A916;
-    padding: 12px 18px;
+    background-color: #6A8A7F;
+    padding: 12px 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 #home-nav li:hover {
-    background-color: #F15555;
+    background-color: #79A495;
     transform: scale(1.06);
 }
 
@@ -85,19 +80,41 @@ nav ul, ul.collections-nav {
 }
 
 ul.collections-nav {
-    background-color: #F15555;
-    gap: 25px;
-    padding: 1% 3%;
+    background-color: #6A8A7F;
+    padding: 9px;
+    width: 75%;
+    gap: 0px;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 800px;
 }
 
 .collections-nav a {
-    color: white;
+    color: #ffffff;
     font-weight: 600;
+    font-size: .85rem;
+    letter-spacing: 0rem;
+    text-align: center;
+}
+
+.collections-nav li {
+    width: 85%;
+    text-align: center;
 }
 
 .collections-nav a:hover {
     font-weight: 800;
     letter-spacing: 0rem;
+}
+
+li.book {
+    padding: 0 0 0 2px;
+}
+
+li.book a {
+    padding: 2.8px;
+    display: inline-block;
+    font-size: 1.08rem;
 }
 
 ul.book-list {
@@ -165,7 +182,7 @@ button {
     font-family: system-ui, sans-serif;
     letter-spacing: 0.02rem;
     cursor: pointer;
-    background-color: #50B0B9;
+    background-color: #DB7F67;
     color: white;
     padding: 12px 15px;
     border: none;
@@ -177,7 +194,7 @@ button {
 }
 
 button:hover, #edit-book-link:hover, #delete-book-link:hover, a.select-result:hover {
-    background-color: #3b949d;
+    background-color: #D46549;
     transform: scale(1.05);
 }
 
@@ -188,8 +205,8 @@ a.select-result:hover {
 #edit-book-link, #delete-book-link {
     letter-spacing: 0.02rem;
     cursor: pointer;
-    background-color: #50B0B9;
-    color: white;
+    background-color: #DC816A;
+    color: #ffffff;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -215,7 +232,7 @@ a.select-result:hover {
 p#book-status {
     font-weight: 700;
     font-size: .9rem;
-    background-color: #F15555;
+    background-color: #6A8A7F;
     width: 200px;
     padding: 2px;
     text-align: center;
@@ -232,7 +249,7 @@ h3 {
 #favorite-badge {
     font-family: system-ui, sans-serif;
     font-size: .7rem;
-    background-color: rgb(28, 208, 252);
+    background-color: #A54027;
     color: white;
     text-align: center;
     padding: 4px 2px;
@@ -341,6 +358,40 @@ label[for="isReading"] {
 
     #welcome-page h1 {
         font-size: 2rem;
+    }
+
+    h2.dm-serif-display {
+        font-size: 1.4rem;
+    }
+
+    ul.collections-nav {
+        padding: 8px;
+        width: 80%;
+        gap: 2px;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 625) {
+    .collections-nav a {
+        font-weight: 600;
+        font-size: .65rem;
+    }
+
+    .collections-nav li {
+        width: 100%;
+        text-align: center;
+    }
+
+    ul.collections-nav {
+        padding: 8px;
+        width: 75%;
+        gap: 2px;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 800px;
     }
 }
 
@@ -460,4 +511,16 @@ div.search-result-details {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+input[type="search"].search-shelf {
+    padding: 4px 5px;
+    letter-spacing: 0.03rem;
+    width: 220px;
+    font-size: 0.97rem;
+    font-family: system-ui, sans-serif;
+}
+
+.hidden {
+    display: none;
 }

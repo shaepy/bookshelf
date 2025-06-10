@@ -1,11 +1,14 @@
 <%- include('../../partials/header') %>
     <p><a href="/" class="nav-link">← Go Home</a></p>
-    <h1 class="dm-serif-display">Books Owned</h1>
+    <h1 class="dm-serif-display">My Library Collection</h1>
     <%- include('../../partials/nav') %>
     <h2 class="dm-serif-display">You own <%= books.length %> books 📚</h2>
+
+    <input type="search" name="search-shelf" class="search-shelf" placeholder="🔎"/>
+
     <ul class="book-list">
         <% books.forEach(book => { %>
-            <li><a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a></li>
+            <li class="book"><a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a></li>
         <% }); %>
     </ul>
 </body>

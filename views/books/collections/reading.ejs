@@ -2,17 +2,20 @@
     <p><a href="/" class="nav-link">← Go Home</a></p>
     <h1 class="dm-serif-display">Reading List</h1>
     <%- include('../../partials/nav') %>
+
+    <input type="search" name="search-shelf" class="search-shelf" placeholder="🔎"/>
+
     <h2 class="dm-serif-display"><%= booksInProgress.length %> Books in Progress</h2>
     <ul class="book-list">
         <% booksInProgress.forEach(book => { %>
-        <li><a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a></li>
+        <li class="book"><a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a></li>
         <% }); %>
     </ul>
 
     <h2 class="dm-serif-display"><%= booksToRead.length %> Books to Read</h2>
     <ul class="book-list">
         <% booksToRead.forEach(book => { %>
-        <li><a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a></li>
+        <li class="book"><a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a></li>
         <% }); %>
     </ul>
 </body>

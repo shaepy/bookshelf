@@ -206,9 +206,13 @@ app.delete('/books/:bookId', async (req, res) => {
 
 mongoose.connect(process.env.MONGODB_URI)
 
-mongoose.connection.on("connected", () => {
-  console.log(`Connected to MongoDB ${mongoose.connection.name}.`)
-})
+try {
+  mongoose.connection.on("connected", () => {
+    console.log(`Connected to MongoDB collection: ${mongoose.connection.name}.`)
+  })
+} catch (error) {
+  console.log(`Failed to connect to MongoDB collection: ${mongoose.connection.name}`)
+}
 
 app.listen(process.env.PORT, () => {
     console.log(`App is listening on port ${process.env.PORT}`)

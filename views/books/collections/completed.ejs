@@ -3,9 +3,12 @@
     <h1 class="dm-serif-display">Finished Books</h1>
     <%- include('../../partials/nav') %>
     <h2 class="dm-serif-display">You have completed <%= books.length %> books ★</h2>
+
+    <input type="search" name="search-shelf" class="search-shelf" placeholder="🔎"/>
+
     <ul class="book-list" id="finished-books-list">
         <% books.forEach(book => { %>
-        <li><a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a></li>
+            <li class="book"><a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a></li>
         <% }); %>
     </ul>
 </body>
