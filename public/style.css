@@ -107,10 +107,6 @@ ul.collections-nav {
     letter-spacing: 0rem;
 }
 
-li.book {
-    padding: 0 0 0 2px;
-}
-
 li.book a {
     padding: 2.8px;
     display: inline-block;
