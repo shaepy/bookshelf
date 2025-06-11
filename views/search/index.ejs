@@ -1,8 +1,6 @@
 <%- include('../partials/header') %>
     <p><a href="/" class="nav-link">← Go Home</a></p>
     <h1 class="dm-serif-display">Search for Books</h1>
-    <!-- form goes here -->
-
     <form action="/search" method="POST" id="search-form">
         <div>
             <label for="title">Search by Book Title</label>
@@ -19,7 +17,8 @@
                 <option>5</option>
                 <option>10</option>
                 <option>20</option>
-                <option>30</option>
+                <option>50</option>
+                <option>100</option>
             </select>
         </div>
         <button type="submit" id="search-button">find my book</button>

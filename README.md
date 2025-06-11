@@ -26,4 +26,7 @@ Your completed application should have the following RESTful routes:
 | DELETE      | /plants/:id      | Destroy | Deletes a specific plant by its ID     |
 
 ## Resources
-- [Open Library Covers API](https://openlibrary.org/dev/docs/api/covers) for book cover images
+- [Open Library API](https://openlibrary.org/dev/docs/api)
+    - Book Search API
+    - Authors API
+    - Covers API for images

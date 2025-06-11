@@ -16,7 +16,7 @@
                     <p>ISBN: <%= e.isbn_13 %></p>
                 </div>
                 <form action="/search/results/<%= e.isbn_13 %>" method="POST">
-                    <button type="submit" id="add-book-from-search">add book</button>
+                    <button type="submit" class="add-book-from-search">add book</button>
                 </form>
             </div>
         <% }); %>

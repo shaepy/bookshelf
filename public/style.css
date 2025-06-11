@@ -14,55 +14,55 @@ body {
     font-family: system-ui, sans-serif;
     gap: 18px;
     letter-spacing: 0.03rem;
-    background-color: #F7EDDE;
-    color: #5C4C47;
+    background-color: #FBF6EF;
+    color: #51433E;
 }
 
 a {
     text-decoration: none;
-    color: #5C4C47;
+    color: #51433E;
 }
 
 a:hover {
-    color:#DB7F67;
+    color:#D8735A;
     letter-spacing: 0rem;
     font-weight: 800;
 }
 
 a.nav-link {
     padding: 2px 3px;
-    font-weight: 800;
+    font-weight: 600;
     letter-spacing: 0.02rem;
-    color: #DB7F67;
+    color: #5C4D47;
 }
 
 a.nav-link:hover {
-    color: #D46549;
+    color: #D8735A;
     font-weight: 700;
 }
 
 a.nav-link.home {
     font-size: .95rem;
     letter-spacing: 0.01rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #ffffff;
 }
 
 #home-nav li {
-    background-color: #6A8A7F;
-    padding: 12px 16px;
+    background-color: #59736A;
+    padding: 12px 14px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 #home-nav li:hover {
-    background-color: #79A495;
+    background-color: #475C55;
     transform: scale(1.06);
 }
 
 a.select-result {
-    background-color: #50B0B9;
+    background-color: #59736A;
     color: white;
     font-size: .8rem;
     font-weight: 600;
@@ -75,16 +75,17 @@ a.select-result {
 nav ul, ul.collections-nav {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 14px;
     list-style-type: none;
 }
 
 ul.collections-nav {
-    background-color: #6A8A7F;
+    background-color: #59736A;
     padding: 9px;
     width: 75%;
     gap: 0px;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     max-width: 800px;
 }
@@ -93,13 +94,13 @@ ul.collections-nav {
     color: #ffffff;
     font-weight: 600;
     font-size: .85rem;
-    letter-spacing: 0rem;
+    letter-spacing: 0.03rem;
     text-align: center;
 }
 
 .collections-nav li {
-    width: 85%;
     text-align: center;
+    min-width: 87px;
 }
 
 .collections-nav a:hover {
@@ -110,7 +111,7 @@ ul.collections-nav {
 li.book a {
     padding: 2.8px;
     display: inline-block;
-    font-size: 1.08rem;
+    font-size: 1.1rem;
 }
 
 ul.book-list {
@@ -178,7 +179,7 @@ button {
     font-family: system-ui, sans-serif;
     letter-spacing: 0.02rem;
     cursor: pointer;
-    background-color: #DB7F67;
+    background-color: #D8735A;
     color: white;
     padding: 12px 15px;
     border: none;
@@ -186,16 +187,18 @@ button {
     text-decoration: none;
     font-size: .9rem;
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-button:hover, #edit-book-link:hover, #delete-book-link:hover, a.select-result:hover {
+button:hover, #edit-book-link:hover, #delete-book-link:hover {
     background-color: #D46549;
     transform: scale(1.05);
 }
 
 a.select-result:hover {
+    background-color: #475C55;
     letter-spacing: 0.03rem;
+    transform: scale(1.05);
 }
 
 #edit-book-link, #delete-book-link {
@@ -203,12 +206,12 @@ a.select-result:hover {
     cursor: pointer;
     background-color: #DC816A;
     color: #ffffff;
-    padding: 12px 20px;
+    padding: 12px 15px;
     border: none;
     border-radius: 4px;
     text-decoration: none;
     font-size: .9rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 #show-page-buttons-div {
@@ -228,7 +231,7 @@ a.select-result:hover {
 p#book-status {
     font-weight: 700;
     font-size: .9rem;
-    background-color: #6A8A7F;
+    background-color: #506860;
     width: 200px;
     padding: 2px;
     text-align: center;
@@ -245,7 +248,7 @@ h3 {
 #favorite-badge {
     font-family: system-ui, sans-serif;
     font-size: .7rem;
-    background-color: #A54027;
+    background-color: #15796E;
     color: white;
     text-align: center;
     padding: 4px 2px;
@@ -337,7 +340,7 @@ label[for="isReading"] {
     font-size: .8rem;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
     div#book-section {
         display: flex;
         flex-direction: column-reverse;
@@ -359,33 +362,21 @@ label[for="isReading"] {
     h2.dm-serif-display {
         font-size: 1.4rem;
     }
-
-    ul.collections-nav {
-        padding: 8px;
-        width: 80%;
-        gap: 2px;
-        justify-content: space-around;
-        align-items: center;
-        max-width: 800px;
-    }
 }
 
-@media (max-width: 625) {
+@media (max-width: 625px) {
     .collections-nav a {
         font-weight: 600;
-        font-size: .65rem;
+        font-size: .8rem;
     }
 
     .collections-nav li {
-        width: 100%;
         text-align: center;
     }
 
     ul.collections-nav {
-        padding: 8px;
-        width: 75%;
-        gap: 2px;
-        justify-content: space-around;
+        padding: 7px;
+        justify-content: space-between;
         align-items: center;
         max-width: 800px;
     }
@@ -425,7 +416,7 @@ button#search-button {
 }
 
 div.search-result-details {
-    border: 1px solid #F3A916;
+    border: 1px solid #506860;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -478,13 +469,21 @@ div.search-result-details {
     gap: 20px;
 }
 
-#add-book-from-search {
+.add-book-from-search {
     width: 100px;
     font-size: .8rem;
 }
 
+button.add-book-from-search {
+    background-color:#59736A;
+}
+
+button.add-book-from-search:hover {
+    background-color: #475C55;
+}
+
 .edition-divs {
-    border: 1px solid #F15555;
+    border: 1px solid #59736A;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -510,11 +509,13 @@ div.search-result-details {
 }
 
 input[type="search"].search-shelf {
-    padding: 4px 5px;
+    padding: 5px;
     letter-spacing: 0.03rem;
     width: 220px;
-    font-size: 0.97rem;
+    font-size: 0.93rem;
     font-family: system-ui, sans-serif;
+    border: 1px solid #59736A;
+    border-radius: 3px;
 }
 
 .hidden {
