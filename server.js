@@ -179,7 +179,6 @@ async function fetchBookByISBN(bookId) {
     if (!languageReq.ok) throw new Error("Failed to fetch language data");
     languageReq = await languageReq.json();
   }
-
   // call for author
   let authorReq;
   if (edition.authors) {
@@ -197,8 +196,6 @@ async function fetchBookByISBN(bookId) {
   bookJson = await bookJson.json();
 
   const publisher = edition.publishers[0];
-  // const title = edition.title;
-  // const pages = edition.number_of_pages;
   const publishDate = edition.publish_date;
   const language = languageReq ? languageReq.name : "English";
   const author = authorReq ? authorReq.name : "Unknown Author";
