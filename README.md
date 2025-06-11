@@ -18,8 +18,8 @@ A web app to collect and manage your books with Model-View-Controller (MVC) arch
 <img width="450" alt="search page" src="https://github.com/user-attachments/assets/b619403a-eb09-4c48-a9e7-1267c15d2041" />
 
 #### Search Results
-<img height="350" alt="search results for girl with dragon tattoo" src="https://github.com/user-attachments/assets/f1a638c0-cd06-4b61-a85c-b25b02c5f1f7" />
-<img height="350" alt="search results for stephen king" src="https://github.com/user-attachments/assets/874722df-a820-408e-8159-a0a531136880" />
+<img height="400" alt="search results for girl with dragon tattoo" src="https://github.com/user-attachments/assets/f1a638c0-cd06-4b61-a85c-b25b02c5f1f7" />
+<img height="495" alt="search results for stephen king" src="https://github.com/user-attachments/assets/874722df-a820-408e-8159-a0a531136880" />
 
 #### Select Book Edition
 <img height="300" alt="select book edition" src="https://github.com/user-attachments/assets/72531733-d4d9-4228-9d56-73157263440b" />
