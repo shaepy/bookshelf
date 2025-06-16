@@ -12,7 +12,7 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: system-ui, sans-serif;
-    gap: 18px;
+    gap: 20px;
     letter-spacing: 0.03rem;
     background-color: #FBF6EF;
     color: #51433E;
@@ -270,7 +270,7 @@ h3 {
 div#welcome-page {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
 }
 
@@ -542,7 +542,7 @@ input[type="search"].search-shelf {
 
 #new-account-form div input[type='text'], #new-account-form div input[type='password'],
 #sign-in-form div input[type='text'], #sign-in-form div input[type='password'] {
-    padding: 3px;
+    padding: 3.5px;
     width: 160px;
     font-family: system-ui, sans-serif;
     letter-spacing: 0.04rem;
@@ -550,7 +550,7 @@ input[type="search"].search-shelf {
 }
 
 #home-tagline {
-    font-size: 1.57rem;
+    font-size: 1.45rem;
     letter-spacing: 0.05rem;
     font-weight: 300;
 }
