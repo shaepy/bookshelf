@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+ <p><a href="/" class="nav-link">← Go Home</a></p>
+ <h1 class="dm-serif-display">Create a New Account</h1>
+
+ <% if (userExists) { %>
+    <p><a href="/auth/sign-in" class="auth-link">Sign In</a> to your account</p>
+ <% } %>
+
+ <form action="/auth/sign-up" method="POST" id="new-account-form">
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" />
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" />
+    </div>
+    <div>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" />
+    </div>
+
+    <% if (invalidPassword) { %>
+        <p>Passwords do not match.</p>
+    <% } %>
+
+    <button type="submit">sign up</button>
+ </form>
+</body>
+</html>

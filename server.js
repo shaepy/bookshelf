@@ -9,6 +9,8 @@ const session = require('express-session');
 
 const bookRoutes = require("./routes/books.js");
 const searchRoutes = require("./routes/search.js");
+const authController = require("./controllers/auth.js");
+const userToView = require("./middleware/user-to-view.js");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -53,11 +55,19 @@ try {
   );
 }
 
-app.listen(process.env.PORT, () => {
-  console.log(`App is listening on port ${process.env.PORT}`);
-});
-
 /* --------- HOME ROUTE --------- */
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+app.use(userToView)
+
+app.use('/auth', authController);
 
 app.get('/', (req, res) => {
   res.render("index");
@@ -65,3 +75,7 @@ app.get('/', (req, res) => {
 
 app.use('/books', bookRoutes)
 app.use('/search', searchRoutes)
+
+app.listen(process.env.PORT, () => {
+  console.log(`App is listening on port ${process.env.PORT}`);
+});

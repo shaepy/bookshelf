@@ -521,3 +521,61 @@ input[type="search"].search-shelf {
 .hidden {
     display: none;
 }
+
+#new-account-form, #sign-in-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#new-account-form div, #sign-in-form div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#new-account-form button, #sign-in-form button {
+    width: 100px;
+}
+
+#new-account-form div input[type='text'], #new-account-form div input[type='password'],
+#sign-in-form div input[type='text'], #sign-in-form div input[type='password'] {
+    padding: 3px;
+    width: 160px;
+    font-family: system-ui, sans-serif;
+    letter-spacing: 0.04rem;
+    text-align: center;
+}
+
+#home-tagline {
+    font-size: 1.57rem;
+    letter-spacing: 0.05rem;
+    font-weight: 300;
+}
+
+#welcome-page header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-link {
+    letter-spacing: 0.02rem;
+    color: #5C4D47;
+    font-weight: 700;
+}
+
+.auth-link:hover {
+    color: #D8735A;
+    letter-spacing: 0.02rem;
+    font-weight: 700;
+}
+
+nav.user-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75%;
+}

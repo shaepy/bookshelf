@@ -1,7 +1,13 @@
 <%- include('../partials/header') %>
-    <p><a href="/" class="nav-link">← Go Home</a></p>
-    <h1 class="dm-serif-display">Bookshelf</h1>
-    <%- include('../partials/nav') %>
+    <% if (user) { %> 
+        <%- include('../partials/user-nav') %>
+        <h1 class="dm-serif-display"><%= user.username %>'s Bookshelf</h1>
+        <%- include('../partials/nav') %>
+    <% } else { %>
+        <p><a href="/" class="nav-link">← Go Home</a></p>
+        <h1 class="dm-serif-display">Bookshelf</h1>
+    <% } %>
+
     <h2 class="dm-serif-display">You have <%= books.length %> books on your shelf 📚</h2>
 
     <input type="search" name="search-shelf" class="search-shelf" placeholder="🔎"/>

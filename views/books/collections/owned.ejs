@@ -1,5 +1,9 @@
 <%- include('../../partials/header') %>
-    <p><a href="/" class="nav-link">← Go Home</a></p>
+    <% if (user) { %> 
+        <%- include('../../partials/user-nav') %>
+    <% } else { %>
+        <p><a href="/" class="nav-link">← Go Home</a></p>
+    <% } %>
     <h1 class="dm-serif-display">My Library Collection</h1>
     <%- include('../../partials/nav') %>
     <h2 class="dm-serif-display">You own <%= books.length %> books 📚</h2>

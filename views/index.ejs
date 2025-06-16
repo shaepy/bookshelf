@@ -1,8 +1,14 @@
-<!-- this is the / root page -->
 <%- include('partials/header') %>
   <div id="welcome-page">
-    <h1>Welcome to Bookshelf</h1>
-    <p>Create and organize your own digital book collection 📚</p>
+    <header>
+      <h1>Welcome to Bookshelf</h1>
+      <% if (user) { %>
+        <p id="home-tagline"><%= user.username %>'s personal digital book collection 📚</p>
+      <% } else { %>
+        <p id="home-tagline">your personal digital book collection 📚</p>
+      <% } %>
+    </header>
+    <% if (user) {%>
     <nav id="home-nav">
       <ul>
         <li><a href="/books" class="nav-link home">view bookshelf</a></li>
@@ -10,7 +16,13 @@
         <li><a href="/books/new" class="nav-link home">add new book</a></li>
       </ul>
     </nav>
+    <% } else { %>
+     <p><a href="/auth/sign-up" class="auth-link">Create an Account</a> or <a href="/auth/sign-in" class="auth-link">Sign In</a> to view your bookshelf</p> 
+    <% } %>
   </div>
   <img src="/img/magical-library-cat-stockcake.jpg" id="home-image" alt="cat sitting in magical library with books"/>
+  <% if (!user) { %>
+    <p><a href="/books" class="auth-link">View Bookshelf as a Guest</a></p>
+  <% } %>
 </body>
 </html>

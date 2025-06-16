@@ -5,6 +5,9 @@ const router = express.Router();
 // Global searchResults object
 let searchResults;
 
+// TODO-ST: create show pages for search result books to see information
+// eventually will allow access without auth for search
+
 /* --------- GET ROUTES --------- */
 
 router.get("/", (req, res) => {
