@@ -1,5 +1,6 @@
 const express = require("express");
 const Book = require("../models/books.js");
+const User = require("../models/user.js");
 const router = express.Router();
 
 // Global searchResults object
@@ -19,8 +20,9 @@ router.get("/results", (req, res) => {
 });
 
 router.get("/works/:resultId", async (req, res) => {
-  const edition = await fetchEdition(req.params.resultId);
-  res.render("search/show", { edition: edition });
+  const editions = await fetchEditions(req.params.resultId);
+  console.log(editions)
+  res.render("search/editions", { editions: editions });
 });
 
 /* --------- POST ROUTES --------- */
@@ -28,6 +30,14 @@ router.get("/works/:resultId", async (req, res) => {
 router.post("/results/:isbn", async (req, res) => {
   const bookModel = await fetchBookByISBN(req.params.isbn);
   const newBook = await Book.create(bookModel);
+
+  // add to user's books collection
+  const user = await User.findOne({ username: req.session.user.username })
+  
+  await User.findByIdAndUpdate(user.id, { 
+    $push : { books: newBook.id }
+  })
+
   res.redirect(`/books/${newBook.id}`);
 });
 
@@ -49,7 +59,7 @@ async function openLibraryReq(search, label, limit) {
   return await response.json();
 }
 
-async function fetchEdition(resultId) {
+async function fetchEditions(resultId) {
   const response = await fetch(
     `https://openlibrary.org/works/${resultId}/editions.json`
   );
