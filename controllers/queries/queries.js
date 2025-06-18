@@ -1,4 +1,3 @@
-// const Book = require("../models/books.js");
 const User = require("../../models/user.js");
 
 // returns that user's books array
