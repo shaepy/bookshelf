@@ -1,13 +1,16 @@
 <%- include('../partials/header') %>
     <p><a href="/" class="nav-link">← Go Home</a></p>
-    <h1 class="dm-serif-display">Browse Books</h1>
+    <h1 class="dm-serif-display">Browse Book Catalog</h1>
 
     <p>Viewing all <%= books.length %> books.</p>
+
+    <!-- #SEARCH DOES NOT WORK YET, NEED TO IMPLEMENT -->
     <input type="search" name="search-browse" class="search-browse" placeholder="🔎"/>
+
     <div id="browse-books-container">
         <% books.forEach((book) => { %>
             <div class="browse-book">
-                <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="image of book cover"/>
+                <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="book cover for <%= book.title %>"/>
                 <div class="browse-book-metadata">
                     <div>
                         <p class="browse-book-header">TITLE</p>

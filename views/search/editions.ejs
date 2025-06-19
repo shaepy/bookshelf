@@ -6,7 +6,7 @@
     <div id="editions-box">
         <% editions.entries.forEach((e) => { %>
             <div class="edition-divs">
-                <img src="https://covers.openlibrary.org/b/isbn/<%= e.isbn_13 %>-M.jpg" />
+                <img src="https://covers.openlibrary.org/b/isbn/<%= e.isbn_13 %>-M.jpg" alt="book cover for <%= e.title %>"/>
                 <div>
                     <p><strong>Title:</strong> <%= e.title %></p>
                     <p><strong>Publish Date:</strong> <%= e.publish_date %></p>
