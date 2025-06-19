@@ -11,11 +11,6 @@ const bookSchema = new mongoose.Schema({
     year: { type: String },
     publisher: { type: String },
     pages: { type: Number },
-    isOwned: { type: Boolean, default: false },
-    isCompleted: { type: Boolean, default: false },
-    wantToRead: {type: Boolean, default: false },
-    isFavorite: { type: Boolean, default: false },
-    isReading: {type: Boolean, default: false }
 })
 
 module.exports = mongoose.model('Book', bookSchema)

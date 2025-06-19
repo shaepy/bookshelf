@@ -1,8 +1,8 @@
 const express = require("express");
-const Book = require("../models/books.js");
 const User = require("../models/user.js");
 const router = express.Router();
 
+// !Change to session-based, not global 
 // Global searchResults object
 let searchResults;
 
@@ -21,22 +21,20 @@ router.get("/results", (req, res) => {
 
 router.get("/works/:resultId", async (req, res) => {
   const editions = await fetchEditions(req.params.resultId);
-  console.log(editions)
   res.render("search/editions", { editions: editions });
 });
 
 /* --------- POST ROUTES --------- */
 
 router.post("/results/:isbn", async (req, res) => {
-  const bookModel = await fetchBookByISBN(req.params.isbn);
-  const newBook = await Book.create(bookModel);
+  const user = await User.findById(req.session.user._id);
+  const book = await fetchBookByISBN(req.params.isbn);
 
-  // add to user's books collection
-  const user = await User.findOne({ username: req.session.user.username })
-  
-  await User.findByIdAndUpdate(user.id, { 
-    $push : { books: newBook.id }
-  })
+  user.books.push(book);
+  await user.save();
+
+  const newBook = user.books.find(b => b.isbn === Number(req.params.isbn));
+  console.log(newBook);
 
   res.redirect(`/books/${newBook.id}`);
 });
@@ -97,12 +95,11 @@ async function fetchBookByISBN(bookId) {
   if (!bookJson.ok) throw new Error("Failed to fetch book data");
   bookJson = await bookJson.json();
 
-  const publisher = edition.publishers[0];
-  const publishDate = edition.publish_date;
+  const publisher = edition.publishers[0] ? edition.publishers[0] : "Unknown Publisher"
   const language = languageReq ? languageReq.name : "English (Default)";
   const author = authorReq ? authorReq.name : "Unknown Author";
-  const description = bookJson.description ? bookJson.description.value : "Unknown";
-  const genre = bookJson.subjects.slice(0, 7).join(",");
+  const description = bookJson.description ? bookJson.description.value : "No description found";
+  const genre = bookJson.subjects.slice(0, 7).join(", ");
 
   const book = {
     title: edition.title,
@@ -111,7 +108,7 @@ async function fetchBookByISBN(bookId) {
     language: language,
     isbn: Number(bookId),
     description: description,
-    year: publishDate,
+    year: edition.publish_date,
     publisher: publisher,
     pages: edition.number_of_pages,
     isOwned: false,

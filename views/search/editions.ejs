@@ -8,15 +8,15 @@
             <div class="edition-divs">
                 <img src="https://covers.openlibrary.org/b/isbn/<%= e.isbn_13 %>-M.jpg" />
                 <div>
-                    <p>title: <%= e.title %></p>
-                    <p>publish date: <%= e.publish_date %></p>
+                    <p><strong>Title:</strong> <%= e.title %></p>
+                    <p><strong>Publish Date:</strong> <%= e.publish_date %></p>
                     <% if (e.publishers) { %>
-                        <p>publisher: <%= e.publishers %></p>
+                        <p><strong>Publisher:</strong> <%= e.publishers %></p>
                     <% } %>
                     <% if (e.number_of_pages) { %>
-                        <p>pages: <%= e.number_of_pages %></p>
+                        <p><strong>Pages:</strong> <%= e.number_of_pages %></p>
                     <% } %>
-                    <p>ISBN: <%= e.isbn_13 %></p>
+                    <p><strong>ISBN:</strong> <%= e.isbn_13 %></p>
                 </div>
                 <form action="/search/results/<%= e.isbn_13 %>" method="POST">
                     <button type="submit" class="add-book-from-search">add book</button>

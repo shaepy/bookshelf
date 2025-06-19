@@ -1,7 +1,17 @@
 const User = require("../../models/user.js");
 
 const getUser = async (userID) => {
-  return await User.findById(userID).populate('books');
+  return await User.findById(userID);
+};
+
+const getBookFromUser = async (userID, bookID) => {
+  const user = await getUser(userID);
+  return user.books.find(b => b.id === bookID);
+};
+
+const getBookFromSearch = async (userID, matchISBN) => {
+  const user = await getUser(userID);
+  return user.books.find(book => book.isbn === matchISBN)
 }
 
 const getUserBooks = async (userID) => {
@@ -46,5 +56,7 @@ module.exports = {
     getBooksRead,
     getWantToRead,
     getIsReading,
-    getFavorites
+    getFavorites,
+    getBookFromUser,
+    getBookFromSearch
 };

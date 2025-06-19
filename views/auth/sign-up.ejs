@@ -22,6 +22,8 @@
 
     <% if (invalidPassword) { %>
         <p>Passwords do not match.</p>
+    <% } else if (passwordTooShort) { %>
+        <p>Password must be a min. length of 6 characters.</p>
     <% } %>
 
     <button type="submit">sign up</button>
