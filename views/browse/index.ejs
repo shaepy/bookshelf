@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+    <p><a href="/" class="nav-link">← Go Home</a></p>
+    <h1 class="dm-serif-display">Browse Books</h1>
+
+    <p>Viewing all <%= books.length %> books.</p>
+    <input type="search" name="search-browse" class="search-browse" placeholder="🔎"/>
+    <div id="browse-books-container">
+        <% books.forEach((book) => { %>
+            <div class="browse-book">
+                <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="image of book cover"/>
+                <div class="browse-book-metadata">
+                    <div>
+                        <p class="browse-book-header">TITLE</p>
+                        <p class="browse-book-details"><%= book.title %></p>
+                    </div>
+                    <div>
+                        <p class="browse-book-header">AUTHOR</p>
+                        <p class="browse-book-details"><%= book.author %></p>                        
+                    </div>
+                    <p class="browse-book-publish-date">Published <%= book.year %></p>
+                    <a href="/browse/<%= book.id %>">view</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

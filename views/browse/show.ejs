@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+    <p><a href="/browse" class="nav-link">← Browse</a></p>
+
+    <div id="book-section">
+        <div id="book-details">
+            <h1 class="book-title dm-serif-display"><%= book.title %>
+                <% if (book.subtitle) { %> 
+                    • <%= book.subtitle %>
+                <% } %></h1>
+            <h2 class="book-title dm-serif-display">written by <%= book.author %></h2>
+            <p><%= book.description %></p>
+            <h3>Genre</h3>
+            <p><%= book.genre %></p>
+            <h3>Language</h3>
+            <p><%= book.language %></p>
+            <h3>More Info</h3>
+            <p><%= book.pages %> pages</p>
+            <p>Published in <%= book.year %> by <%= book.publisher %></p>
+            <p>ISBN: <%= book.isbn %></p>
+        </div>
+        <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" alt="image of book cover"/>
+    </div>
+    <% if (user && !isSavedToShelf) { %>
+    <form action="/browse/<%= book.id %>" method="POST">
+        <button type="submit" class="add-book-from-browse">add to bookshelf</button>
+    </form>
+    <% } %>
+
+    <% if (isSavedToShelf) { %>
+    <a href="/books/<%= bookInShelf.id %>" class="view-in-bookshelf-link">view in bookshelf</a>
+    <% } %>
+</body>
+</html>

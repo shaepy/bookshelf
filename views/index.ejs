@@ -11,9 +11,14 @@
     <% if (user) {%>
     <nav id="home-nav">
       <ul>
-        <li><a href="/books" class="nav-link home">view bookshelf</a></li>
-        <li><a href="/search" class="nav-link home">search books</a></li>
-        <li><a href="/books/new" class="nav-link home">add new book</a></li>
+        <div>
+          <li><a href="/books" class="nav-link home">my bookshelf</a></li>
+          <li><a href="/books/new" class="nav-link home">add new book</a></li>
+        </div>
+        <div>
+          <li><a href="/browse" class="nav-link home">browse books</a></li>
+          <li><a href="/search" class="nav-link home">search books</a></li>
+        </div>
       </ul>
     </nav>
     <% } else { %>
@@ -23,6 +28,8 @@
   <img src="/img/magical-library-cat-stockcake.jpg" id="home-image" alt="cat sitting in magical library with books"/>
   <% if (!user) { %>
     <p><a href="/books" class="auth-link">View Bookshelf as a Guest</a></p>
+  <% } else { %>
+    <small><a href="/auth/sign-out" class="nav-link">Sign Out</a></small>
   <% } %>
 </body>
 </html>

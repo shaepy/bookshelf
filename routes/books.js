@@ -18,13 +18,6 @@ router.get("/", async (req, res) => {
   res.render("books/index", { books: userBooks });
 });
 
-// TODO-ST
-// #We will remove /all and create a BROWSE page
-router.get("/all", async (req, res) => {
-  const allBooks = await Book.find().sort({ title: "asc" });
-  res.render("books/collections/all-books", { books: allBooks })
-})
-
 router.get("/new", (req, res) => {
   res.render("books/new");
 });

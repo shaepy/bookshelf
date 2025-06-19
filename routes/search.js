@@ -2,12 +2,9 @@ const express = require("express");
 const User = require("../models/user.js");
 const router = express.Router();
 
-// !Change to session-based, not global 
-// Global searchResults object
+// TODO-ST
+// #Change to session-based, not global object
 let searchResults;
-
-// TODO-ST: create show pages for search result books to see information
-// eventually will allow access without auth for search
 
 /* --------- GET ROUTES --------- */
 

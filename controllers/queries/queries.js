@@ -6,7 +6,7 @@ const getUser = async (userID) => {
 
 const getBookFromUser = async (userID, bookID) => {
   const user = await getUser(userID);
-  return user.books.find(b => b.id === bookID);
+  return user.books.id(bookID);
 };
 
 const getBookFromSearch = async (userID, matchISBN) => {
