@@ -1,12 +1,10 @@
 const express = require("express");
-const Book = require("../models/books.js");
+const User = require("../models/user.js");
 const router = express.Router();
 
-// Global searchResults object
+// TODO-ST
+// #Change to session-based, not global object
 let searchResults;
-
-// TODO-ST: create show pages for search result books to see information
-// eventually will allow access without auth for search
 
 /* --------- GET ROUTES --------- */
 
@@ -19,15 +17,22 @@ router.get("/results", (req, res) => {
 });
 
 router.get("/works/:resultId", async (req, res) => {
-  const edition = await fetchEdition(req.params.resultId);
-  res.render("search/show", { edition: edition });
+  const editions = await fetchEditions(req.params.resultId);
+  res.render("search/editions", { editions: editions });
 });
 
 /* --------- POST ROUTES --------- */
 
 router.post("/results/:isbn", async (req, res) => {
-  const bookModel = await fetchBookByISBN(req.params.isbn);
-  const newBook = await Book.create(bookModel);
+  const user = await User.findById(req.session.user._id);
+  const book = await fetchBookByISBN(req.params.isbn);
+
+  user.books.push(book);
+  await user.save();
+
+  const newBook = user.books.find(b => b.isbn === Number(req.params.isbn));
+  console.log(newBook);
+
   res.redirect(`/books/${newBook.id}`);
 });
 
@@ -49,7 +54,7 @@ async function openLibraryReq(search, label, limit) {
   return await response.json();
 }
 
-async function fetchEdition(resultId) {
+async function fetchEditions(resultId) {
   const response = await fetch(
     `https://openlibrary.org/works/${resultId}/editions.json`
   );
@@ -87,12 +92,11 @@ async function fetchBookByISBN(bookId) {
   if (!bookJson.ok) throw new Error("Failed to fetch book data");
   bookJson = await bookJson.json();
 
-  const publisher = edition.publishers[0];
-  const publishDate = edition.publish_date;
+  const publisher = edition.publishers[0] ? edition.publishers[0] : "Unknown Publisher"
   const language = languageReq ? languageReq.name : "English (Default)";
   const author = authorReq ? authorReq.name : "Unknown Author";
-  const description = bookJson.description ? bookJson.description.value : "Unknown";
-  const genre = bookJson.subjects.slice(0, 7).join(",");
+  const description = bookJson.description ? bookJson.description.value : "No description found";
+  const genre = bookJson.subjects.slice(0, 7).join(", ");
 
   const book = {
     title: edition.title,
@@ -101,7 +105,7 @@ async function fetchBookByISBN(bookId) {
     language: language,
     isbn: Number(bookId),
     description: description,
-    year: publishDate,
+    year: edition.publish_date,
     publisher: publisher,
     pages: edition.number_of_pages,
     isOwned: false,

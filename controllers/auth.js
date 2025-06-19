@@ -7,6 +7,7 @@ router.get("/sign-up", (req, res) => {
   res.render("auth/sign-up", {
     userExists: false,
     invalidPassword: false,
+    passwordTooShort: false,
   });
 });
 
@@ -28,12 +29,21 @@ router.post("/sign-up", async (req, res) => {
     return res.render("auth/sign-up", {
       userExists: true,
       invalidPassword: false,
+      passwordTooShort: false,
     });
   }
   if (req.body.password !== req.body.confirmPassword) {
     return res.render("auth/sign-up", {
       userExists: false,
       invalidPassword: true,
+      passwordTooShort: false,
+    });
+  }
+  if (req.body.password.length < 8) {
+    return res.render("auth/sign-up", {
+      userExists: false,
+      invalidPassword: false,
+      passwordTooShort: true,
     });
   }
 

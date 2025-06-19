@@ -9,6 +9,7 @@ const session = require('express-session');
 
 const bookRoutes = require("./routes/books.js");
 const searchRoutes = require("./routes/search.js");
+const browseRoutes = require("./routes/browse.js");
 const authController = require("./controllers/auth.js");
 const userToView = require("./middleware/user-to-view.js");
 
@@ -22,7 +23,7 @@ app.use(morgan("dev"));
 // only cache images
 app.use((req, res, next) => {
   const allowedExtensions = [".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp"];
-  const ext = path.extname(req.url);
+  const ext = path.extname(req.url).toLowerCase();
 
   if (allowedExtensions.includes(ext)) {
     express.static(path.join(__dirname, "public"), {
@@ -33,11 +34,13 @@ app.use((req, res, next) => {
   }
 });
 
-app.use(express.static(path.join(__dirname, "public"), {
-  setHeaders: (res, filePath) => {
-    res.setHeader("Cache-Control", "no-store");
-  }
-}));
+app.use(express.static(path.join(__dirname, "public")));
+
+// app.use(express.static(path.join(__dirname, "public"), {
+//   setHeaders: (res, filePath) => {
+//     res.setHeader("Cache-Control", "no-store");
+//   }
+// }));
 
 /* --------- MONGODB CONNECTION --------- */
 
@@ -74,6 +77,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/books', bookRoutes)
+app.use('/browse', browseRoutes)
 app.use('/search', searchRoutes)
 
 app.listen(process.env.PORT, () => {
