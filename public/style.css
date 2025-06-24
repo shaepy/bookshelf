@@ -47,7 +47,7 @@ a.nav-link.home li {
     font-weight: 700;
     color: #ffffff;
     background-color: #59736A;
-    padding: 16px 14px;
+    padding: 17px 14px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -61,7 +61,7 @@ a.nav-link.home li:hover {
 #home-nav ul div {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 a.select-result {
@@ -79,7 +79,7 @@ nav ul, ul.collections-nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     list-style-type: none;
 }
 

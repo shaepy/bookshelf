@@ -5,6 +5,8 @@ const router = express.Router();
 const userToView = require("../middleware/user-to-view.js");
 const isSignedIn = require("../middleware/is-signed-in.js");
 
+// TODO-ST: pagination for browse pages (currently loading all 100+)
+
 /* --------- GET ROUTES --------- */
 
 router.get("/", async (req, res) => {

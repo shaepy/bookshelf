@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
   res.render("books/index", { books: userBooks });
 });
 
-router.get("/new", (req, res) => {
+router.get("/new", isSignedIn, (req, res) => {
   res.render("books/new");
 });
 
@@ -46,7 +46,7 @@ router.get("/favorites", [isSignedIn, userToView], async (req, res) => {
   res.render("books/collections/favorites", { books: favoriteBooks });
 });
 
-router.get("/:bookId", async (req, res) => {
+router.get("/:bookId", [isSignedIn, userToView], async (req, res) => {
   const foundBook = await queries.getBookFromUser(req.session.user._id, req.params.bookId);
   if (!foundBook) return res.status(404).send("Book not found");
   res.render("books/show", { book: foundBook });
@@ -91,24 +91,35 @@ router.put("/:bookId", async (req, res) => {
   const book = user.books.id(req.params.bookId);
   if (!book) return res.status(404).send("Book not found");
 
-  const { title, subtitle, author, isbn, genre, language, description, year, publisher, 
-    isOwned, isCompleted, wantToRead, isFavorite, isReading } = req.body;
+  // const { title, subtitle, author, isbn, genre, language, description, year, publisher, 
+  //   isOwned, isCompleted, wantToRead, isFavorite, isReading } = req.body;
 
-  book.title = title;
-  book.subtitle = subtitle;
-  book.author = author;
-  book.isbn = isbn;
-  book.genre = genre;
-  book.language = language;
-  book.description = description;
-  book.year = year;
-  book.publisher = publisher;
-  book.isOwned = isOwned === "on";
-  book.isCompleted = isCompleted === "on";
-  book.wantToRead = wantToRead === "on";
-  book.isFavorite = isFavorite === "on";
-  book.isReading = isReading === "on";
+  // book.title = title;
+  // book.subtitle = subtitle;
+  // book.author = author;
+  // book.isbn = isbn;
+  // book.genre = genre;
+  // book.language = language;
+  // book.description = description;
+  // book.year = year;
+  // book.publisher = publisher;
+  // book.isOwned = isOwned === "on";
+  // book.isCompleted = isCompleted === "on";
+  // book.wantToRead = wantToRead === "on";
+  // book.isFavorite = isFavorite === "on";
+  // book.isReading = isReading === "on";
 
+  const { isOwned, isCompleted, wantToRead, isFavorite, isReading, ...bookData } = req.body;
+  const editBook = {
+    ...bookData,
+    isOwned: isOwned === "on",
+    isCompleted: isCompleted === "on",
+    wantToRead: wantToRead === "on",
+    isFavorite: isFavorite === "on",
+    isReading: isReading === "on",
+  };
+
+  book.set(editBook);
   await user.save();
 
   res.redirect(`/books/${req.params.bookId}`);

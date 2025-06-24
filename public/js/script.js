@@ -23,3 +23,5 @@ searchInput.forEach((search) => {
 //     el.classList.toggle("hidden", !isVisible);
 //   });
 // });
+
+// TODO-ST add js that pushes books with an image to the top of search/works/:resultId

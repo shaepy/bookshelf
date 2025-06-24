@@ -2,8 +2,7 @@ const express = require("express");
 const User = require("../models/user.js");
 const router = express.Router();
 
-// TODO-ST
-// #Change to session-based, not global object
+// TODO-ST: Change to session-based, not global object
 let searchResults;
 
 /* --------- GET ROUTES --------- */
@@ -18,7 +17,7 @@ router.get("/results", (req, res) => {
 
 router.get("/works/:resultId", async (req, res) => {
   const editions = await fetchEditions(req.params.resultId);
-  res.render("search/editions", { editions: editions });
+  res.render("search/editions", { editions });
 });
 
 /* --------- POST ROUTES --------- */

@@ -18,7 +18,7 @@ const booksSchema = new mongoose.Schema({
     wantToRead: {type: Boolean, default: false },
     isFavorite: { type: Boolean, default: false },
     isReading: {type: Boolean, default: false }
-})
+});
 
 const userSchema = new mongoose.Schema({
     username: {

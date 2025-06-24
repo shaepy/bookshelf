@@ -68,7 +68,7 @@ app.use(
   })
 );
 
-app.use(userToView)
+app.use(userToView);
 
 app.use('/auth', authController);
 
