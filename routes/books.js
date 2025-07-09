@@ -91,24 +91,6 @@ router.put("/:bookId", async (req, res) => {
   const book = user.books.id(req.params.bookId);
   if (!book) return res.status(404).send("Book not found");
 
-  // const { title, subtitle, author, isbn, genre, language, description, year, publisher, 
-  //   isOwned, isCompleted, wantToRead, isFavorite, isReading } = req.body;
-
-  // book.title = title;
-  // book.subtitle = subtitle;
-  // book.author = author;
-  // book.isbn = isbn;
-  // book.genre = genre;
-  // book.language = language;
-  // book.description = description;
-  // book.year = year;
-  // book.publisher = publisher;
-  // book.isOwned = isOwned === "on";
-  // book.isCompleted = isCompleted === "on";
-  // book.wantToRead = wantToRead === "on";
-  // book.isFavorite = isFavorite === "on";
-  // book.isReading = isReading === "on";
-
   const { isOwned, isCompleted, wantToRead, isFavorite, isReading, ...bookData } = req.body;
   const editBook = {
     ...bookData,
